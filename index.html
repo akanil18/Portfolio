@@ -1,247 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anil Paliwal — AI/ML Developer</title>
-  <meta name="description" content="Anil Paliwal — AI/ML Developer, LeetCode Guardian (2145), IIIT Bhubaneswar. Specializing in LLM fine-tuning, Agentic AI, and Vision Transformers.">
+  <meta name="description"
+    content="Anil Paliwal — AI/ML Developer, LeetCode Guardian (2145), IIIT Bhubaneswar. Specializing in LLM fine-tuning, Agentic AI, and Vision Transformers.">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="bento-wrapper">
+  <div class="bento-wrapper">
 
-  <!-- ========== ROW 1: Profile + Terminal + Stats ========== -->
-  <div class="bento-grid">
+    <!-- ========== ROW 1: Profile + Terminal + Stats ========== -->
+    <div class="bento-grid">
 
-    <!-- PROFILE CARD (2x2) -->
-    <div class="bento-card card-2x2 profile-card">
-      <img src="images/profile.jpg" alt="Anil Paliwal" class="profile-avatar">
-      <div class="profile-status">
-        <span class="status-dot"></span>
-        Open to opportunities
+      <!-- PROFILE CARD (2x2) -->
+      <div class="bento-card card-2x2 profile-card">
+        <img src="images/profile.jpg" alt="Anil Paliwal" class="profile-avatar">
+        <div class="profile-status">
+          <span class="status-dot"></span>
+          Open to opportunities
+        </div>
+        <h1 class="profile-name">Anil Paliwal</h1>
+        <p class="profile-handle">AI/ML Developer · IIIT Bhubaneswar '27</p>
+        <p class="profile-bio" id="profile-bio-text">
+          <!-- Typed dynamically by JS -->
+        </p>
       </div>
-      <h1 class="profile-name">Anil Paliwal</h1>
-      <p class="profile-handle">AI/ML Developer · IIIT Bhubaneswar '27</p>
-      <p class="profile-bio" id="profile-bio-text">
-        <!-- Typed dynamically by JS -->
-      </p>
-    </div>
 
-    <!-- TERMINAL CARD (2x1) -->
-    <div class="bento-card card-2x1 terminal-card">
-      <div class="terminal-header">
-        <div class="terminal-dot red"></div>
-        <div class="terminal-dot yellow"></div>
-        <div class="terminal-dot green"></div>
-        <span class="terminal-title">anil@portfolio ~ zsh</span>
+      <!-- TERMINAL CARD (2x1) -->
+      <div class="bento-card card-2x1 terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+          <span class="terminal-title">anil@portfolio ~ zsh</span>
+        </div>
+        <div class="terminal-body" id="terminal-output">
+          <!-- Typed dynamically by JS -->
+        </div>
       </div>
-      <div class="terminal-body" id="terminal-output">
-        <!-- Typed dynamically by JS -->
+
+      <!-- STAT: LeetCode -->
+      <div class="bento-card stat-item">
+        <div class="stat-value green">2145</div>
+        <div class="stat-label">LeetCode Rating</div>
       </div>
-    </div>
 
-    <!-- STAT: LeetCode -->
-    <div class="bento-card stat-item">
-      <div class="stat-value green">2145</div>
-      <div class="stat-label">LeetCode Rating</div>
-    </div>
-
-    <!-- STAT: Problems -->
-    <div class="bento-card stat-item">
-      <div class="stat-value amber">700+</div>
-      <div class="stat-label">Problems Solved</div>
-    </div>
-
-    <!-- STAT: Hackathon -->
-    <div class="bento-card stat-item">
-      <div class="stat-value purple">Top 800</div>
-      <div class="stat-label">Meta Hackathon</div>
-    </div>
-
-    <!-- STAT: CGPA -->
-    <div class="bento-card stat-item">
-      <div class="stat-value blue">8.32</div>
-      <div class="stat-label">B.Tech CGPA</div>
-    </div>
-
-    <!-- ========== SECTION: Experience ========== -->
-    <div class="section-gap">
-      <div class="section-label">Experience</div>
-    </div>
-
-    <!-- EXP: Ankpal -->
-    <div class="bento-card card-2x1">
-      <div class="card-label">Current · AI/ML Developer</div>
-      <div class="exp-card-title">AI/ML Developer</div>
-      <div class="exp-card-org"><a href="https://ankpal.com/" target="_blank">Ankpal Technologies ↗</a></div>
-      <div class="exp-card-meta">May 2026 – Present · Ahmedabad</div>
-      <p class="exp-card-desc">
-        Built autonomous AI agents with persistent memory & MCP connectors. Fine-tuned domain LLMs using LoRA/QLoRA (Unsloth) and benchmarked inference on NVIDIA A6000 GPUs. Developed low-latency Indic voice AI and Runtime Context Summarization systems.
-      </p>
-    </div>
-
-    <!-- EXP: Hyperint -->
-    <div class="bento-card card-2x1">
-      <div class="card-label">SDE Intern</div>
-      <div class="exp-card-title">Software Development Engineer</div>
-      <div class="exp-card-org"><a href="https://www.thewordofmouth.tech/" target="_blank">thewordofmouth (Hyperint) ↗</a></div>
-      <div class="exp-card-meta">Jan 2026 – May 2026 · Jaipur</div>
-      <p class="exp-card-desc">
-        Engineered web scraping engines (Amazon, Myntra) at scale. Built NLP pipelines for sentiment analysis & product tagging. Optimized AWS S3 & CloudFront infrastructure for cost reduction.
-      </p>
-    </div>
-
-    <!-- EXP: IIT Guwahati -->
-    <div class="bento-card card-2x1">
-      <div class="card-label">Research Intern</div>
-      <div class="exp-card-title">Research Intern — Vision Transformers</div>
-      <div class="exp-card-org">IIT Guwahati · Mehta Family School of DS & AI</div>
-      <div class="exp-card-meta">May 2025 – July 2025 · Guwahati</div>
-      <p class="exp-card-desc">
-        Implemented H-CAST Vision Transformer architectures for fine-grained image classification. Integrated B2-based Continual Learning with Dynamic Head Expansion & Replay Buffers.
-      </p>
-    </div>
-
-    <!-- Hackathons Card -->
-    <div class="bento-card card-2x1">
-      <div class="card-label">Honors</div>
-      <div class="exp-card-title">Hackathons & Competitive Honors</div>
-      <div class="exp-card-org">Meta · PyTorch · Smart India Hackathon</div>
-      <p class="exp-card-desc" style="margin-top: 0.5rem;">
-        National Finalist (Top 800 / 31,000+ teams) in Meta, PyTorch & Hugging Face Hackathon. Led college team to a Top 10 finish at Smart India Hackathon.
-      </p>
-    </div>
-
-    <!-- ========== SECTION: Projects ========== -->
-    <div class="section-gap">
-      <div class="section-label">Projects</div>
-    </div>
-
-    <!-- PROJECT: IntelliQuery -->
-    <div class="bento-card card-2x1">
-      <div class="card-label">LLM Agentic System</div>
-      <div class="exp-card-title">IntelliQuery — NL-to-SQL Agent</div>
-      <div class="exp-card-meta">Python · Mistral · CodeLlama · FastAPI · CrewAI</div>
-      <p class="exp-card-desc">
-        Multi-agent LLM pipeline converting natural language to validated SQL queries. Scalable FastAPI backend with CrewAI orchestration and real-time CSV ETL pipelines. 100% accuracy across 50+ LeetCode SQL benchmarks.
-      </p>
-    </div>
-
-    <!-- PROJECT: LeadGen AI -->
-    <div class="bento-card card-2x1">
-      <div class="card-label">AI Outreach Engine</div>
-      <div class="exp-card-title">LeadGen AI</div>
-      <div class="exp-card-meta">Python · FastAPI · MongoDB · Docker · Render</div>
-      <p class="exp-card-desc">
-        AI-driven outreach platform automating personalized cold emails & LinkedIn engagement. Engineered IMAP account warm-up engine. Containerized with Docker and deployed on Render for production users.
-      </p>
-    </div>
-
-    <!-- ========== SECTION: Tech Stack ========== -->
-    <div class="section-gap">
-      <div class="section-label">Tech Stack</div>
-    </div>
-
-    <!-- TECH CARD: AI/ML -->
-    <div class="bento-card card-2x1">
-      <div class="card-label">AI / ML & Frameworks</div>
-      <div class="tech-grid">
-        <span class="tech-pill">PyTorch</span>
-        <span class="tech-pill">TensorFlow</span>
-        <span class="tech-pill">Scikit-Learn</span>
-        <span class="tech-pill">FastAPI</span>
-        <span class="tech-pill">Unsloth</span>
-        <span class="tech-pill">LoRA/QLoRA</span>
-        <span class="tech-pill">Vision Transformers</span>
-        <span class="tech-pill">NLP</span>
-        <span class="tech-pill">Agentic AI</span>
-        <span class="tech-pill">RAG Systems</span>
-        <span class="tech-pill">CrewAI</span>
-        <span class="tech-pill">Pandas</span>
-        <span class="tech-pill">NumPy</span>
+      <!-- STAT: Problems -->
+      <div class="bento-card stat-item">
+        <div class="stat-value amber">700+</div>
+        <div class="stat-label">Problems Solved</div>
       </div>
-    </div>
 
-    <!-- TECH CARD: Tools -->
-    <div class="bento-card">
-      <div class="card-label">Tools & Infra</div>
-      <div class="tech-grid">
-        <span class="tech-pill">vLLM</span>
-        <span class="tech-pill">SGLang</span>
-        <span class="tech-pill">llama.cpp</span>
-        <span class="tech-pill">Docker</span>
-        <span class="tech-pill">AWS</span>
-        <span class="tech-pill">MongoDB</span>
-        <span class="tech-pill">PostgreSQL</span>
+      <!-- STAT: Hackathon -->
+      <div class="bento-card stat-item">
+        <div class="stat-value purple">Top 800</div>
+        <div class="stat-label">Meta Hackathon</div>
       </div>
-    </div>
 
-    <!-- TECH CARD: Languages -->
-    <div class="bento-card">
-      <div class="card-label">Languages</div>
-      <div class="tech-grid">
-        <span class="tech-pill">Python</span>
-        <span class="tech-pill">C / C++</span>
-        <span class="tech-pill">SQL</span>
+      <!-- STAT: CGPA -->
+      <div class="bento-card stat-item">
+        <div class="stat-value blue">8.32</div>
+        <div class="stat-label">B.Tech CGPA</div>
       </div>
-    </div>
 
-    <!-- ========== SECTION: Connect ========== -->
-    <div class="section-gap">
-      <div class="section-label">Connect</div>
-    </div>
-
-    <!-- SOCIAL LINKS -->
-    <div class="bento-card card-1x2">
-      <div class="card-label">Links</div>
-      <div class="social-links">
-        <a href="mailto:paliwalanil132@gmail.com" class="social-link">
-          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          paliwalanil132@gmail.com
-        </a>
-        <a href="https://linkedin.com/in/anil-paliwal" target="_blank" class="social-link">
-          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://github.com/akanil18" target="_blank" class="social-link">
-          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <a href="tel:+918824392182" class="social-link">
-          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          +91 8824392182
-        </a>
-        <span class="social-link" style="cursor: default;">
-          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          LeetCode · Guardian
-        </span>
-        <span class="social-link" style="cursor: default;">
-          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Codeforces · Specialist
-        </span>
+      <!-- ========== SECTION: Experience ========== -->
+      <div class="section-gap">
+        <div class="section-label">Experience</div>
       </div>
-    </div>
 
-    <!-- CONTACT FORM -->
-    <div class="bento-card card-2x1">
-      <div class="card-label">Send a message</div>
-      <form id="contact-form" class="contact-form">
-        <input type="text" id="name" placeholder="Your name" class="contact-input" required>
-        <input type="email" id="email" placeholder="Your email" class="contact-input" required>
-        <textarea id="message" placeholder="Your message..." class="contact-input contact-textarea" required></textarea>
-        <button type="submit" class="contact-btn">Send Message →</button>
-      </form>
-      <div id="form-response"></div>
-    </div>
+      <!-- EXP: Ankpal -->
+      <div class="bento-card card-2x1">
+        <div class="card-label">Current · AI/ML Developer</div>
+        <div class="exp-card-title">AI/ML Developer</div>
+        <div class="exp-card-org"><a href="https://ankpal.com/" target="_blank">Ankpal Technologies ↗</a></div>
+        <div class="exp-card-meta">May 2026 – Present · Ahmedabad</div>
+        <p class="exp-card-desc">
+          Built autonomous AI agents with persistent memory & MCP connectors. Fine-tuned domain LLMs using LoRA/QLoRA
+          (Unsloth) and benchmarked inference on NVIDIA A6000 GPUs. Developed low-latency Indic voice AI and Runtime
+          Context Summarization systems.
+        </p>
+      </div>
 
+      <!-- EXP: Hyperint -->
+      <div class="bento-card card-2x1">
+        <div class="card-label">SDE Intern</div>
+        <div class="exp-card-title">Software Development Engineer</div>
+        <div class="exp-card-org"><a href="https://www.thewordofmouth.tech/" target="_blank">thewordofmouth (Hyperint)
+            ↗</a></div>
+        <div class="exp-card-meta">Jan 2026 – May 2026 · Jaipur</div>
+        <p class="exp-card-desc">
+          Engineered web scraping engines (Amazon, Myntra) at scale. Built NLP pipelines for sentiment analysis &
+          product tagging. Optimized AWS S3 & CloudFront infrastructure for cost reduction.
+        </p>
+      </div>
+
+      <!-- EXP: IIT Guwahati -->
+      <div class="bento-card card-2x1">
+        <div class="card-label">Research Intern</div>
+        <div class="exp-card-title">Research Intern — Vision Transformers</div>
+        <div class="exp-card-org">IIT Guwahati · Mehta Family School of DS & AI</div>
+        <div class="exp-card-meta">May 2025 – July 2025 · Guwahati</div>
+        <p class="exp-card-desc">
+          Implemented H-CAST Vision Transformer architectures for fine-grained image classification. Integrated B2-based
+          Continual Learning with Dynamic Head Expansion & Replay Buffers.
+        </p>
+      </div>
+
+      <!-- Hackathons Card -->
+      <div class="bento-card card-2x1">
+        <div class="card-label">Honors</div>
+        <div class="exp-card-title">Hackathons & Competitive Honors</div>
+        <div class="exp-card-org">Meta · PyTorch · Smart India Hackathon</div>
+        <p class="exp-card-desc" style="margin-top: 0.5rem;">
+          National Finalist (Top 800 / 31,000+ teams) in Meta, PyTorch & Hugging Face Hackathon. Led college team to a
+          Top 10 finish at Smart India Hackathon.
+        </p>
+      </div>
+
+      <!-- ========== SECTION: Projects ========== -->
+      <div class="section-gap">
+        <div class="section-label">Projects</div>
+      </div>
+
+      <!-- PROJECT: IntelliQuery -->
+      <div class="bento-card card-2x1">
+        <div class="card-label">LLM Agentic System</div>
+        <div class="exp-card-title">IntelliQuery — NL-to-SQL Agent</div>
+        <div class="exp-card-meta">Python · Mistral · CodeLlama · FastAPI · CrewAI</div>
+        <p class="exp-card-desc">
+          Multi-agent LLM pipeline converting natural language to validated SQL queries. Scalable FastAPI backend with
+          CrewAI orchestration and real-time CSV ETL pipelines. 100% accuracy across 50+ LeetCode SQL benchmarks.
+        </p>
+      </div>
+
+      <!-- PROJECT: LeadGen AI -->
+      <div class="bento-card card-2x1">
+        <div class="card-label">AI Outreach Engine</div>
+        <div class="exp-card-title">LeadGen AI</div>
+        <div class="exp-card-meta">Python · FastAPI · MongoDB · Docker · Render</div>
+        <p class="exp-card-desc">
+          AI-driven outreach platform automating personalized cold emails & LinkedIn engagement. Engineered IMAP account
+          warm-up engine. Containerized with Docker and deployed on Render for production users.
+        </p>
+      </div>
+
+      <!-- ========== SECTION: Tech Stack ========== -->
+      <div class="section-gap">
+        <div class="section-label">Tech Stack</div>
+      </div>
+
+      <!-- TECH CARD: AI/ML -->
+      <div class="bento-card card-2x1">
+        <div class="card-label">AI / ML & Frameworks</div>
+        <div class="tech-grid">
+          <span class="tech-pill">PyTorch</span>
+          <span class="tech-pill">TensorFlow</span>
+          <span class="tech-pill">Scikit-Learn</span>
+          <span class="tech-pill">FastAPI</span>
+          <span class="tech-pill">Unsloth</span>
+          <span class="tech-pill">LoRA/QLoRA</span>
+          <span class="tech-pill">Vision Transformers</span>
+          <span class="tech-pill">NLP</span>
+          <span class="tech-pill">Agentic AI</span>
+          <span class="tech-pill">RAG Systems</span>
+          <span class="tech-pill">CrewAI</span>
+          <span class="tech-pill">Pandas</span>
+          <span class="tech-pill">NumPy</span>
+        </div>
+      </div>
+
+      <!-- TECH CARD: Tools -->
+      <div class="bento-card">
+        <div class="card-label">Tools & Infra</div>
+        <div class="tech-grid">
+          <span class="tech-pill">vLLM</span>
+          <span class="tech-pill">SGLang</span>
+          <span class="tech-pill">llama.cpp</span>
+          <span class="tech-pill">Docker</span>
+          <span class="tech-pill">AWS</span>
+          <span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">PostgreSQL</span>
+        </div>
+      </div>
+
+      <!-- TECH CARD: Languages -->
+      <div class="bento-card">
+        <div class="card-label">Languages</div>
+        <div class="tech-grid">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">C / C++</span>
+          <span class="tech-pill">SQL</span>
+        </div>
+      </div>
+
+      <!-- ========== SECTION: Connect ========== -->
+      <div class="section-gap">
+        <div class="section-label">Connect</div>
+      </div>
+
+      <!-- SOCIAL LINKS -->
+      <div class="bento-card card-1x2">
+        <div class="card-label">Links</div>
+        <div class="social-links">
+          <a href="mailto:paliwalanil132@gmail.com" class="social-link">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            paliwalanil132@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/anil-paliwal-339634317/" target="_blank" class="social-link">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/akanil18" target="_blank" class="social-link">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+            </svg>
+            GitHub
+          </a>
+          <a href="tel:+918824392182" class="social-link">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            +91 8824392182
+          </a>
+          <span class="social-link" style="cursor: default;">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            LeetCode · Guardian
+          </span>
+          <span class="social-link" style="cursor: default;">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            Codeforces · Specialist
+          </span>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <div class="bento-card card-2x1">
+        <div class="card-label">Send a message</div>
+        <form id="contact-form" class="contact-form">
+          <input type="text" id="name" placeholder="Your name" class="contact-input" required>
+          <input type="email" id="email" placeholder="Your email" class="contact-input" required>
+          <textarea id="message" placeholder="Your message..." class="contact-input contact-textarea"
+            required></textarea>
+          <button type="submit" class="contact-btn">Send Message →</button>
+        </form>
+        <div id="form-response"></div>
+      </div>
+
+    </div>
   </div>
-</div>
 
-<div class="footer">
-  Built with vanilla HTML, CSS & JS · Hosted on AWS EC2 · © 2026 Anil Paliwal
-</div>
+  <div class="footer">
+    Built with vanilla HTML, CSS & JS · Hosted on AWS EC2 · © 2026 Anil Paliwal
+  </div>
 
-<script src="js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
+
 </html>

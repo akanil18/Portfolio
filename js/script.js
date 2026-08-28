@@ -1,35 +1,37 @@
-// Anil Paliwal Portfolio — Interactive Scripts
-// Bento Grid + Terminal Typewriter + GitHub Contribution Graph
+// ============================================================================
+// ANIL PALIWAL PORTFOLIO — Interactive Scripts
+// Terminal typewriter, orbital animation, scroll reveals, active nav tracking
+// ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ========== TERMINAL TYPEWRITER ENGINE ==========
+  // ========== UTILITY: Sleep ==========
+  function sleep(ms) {
+    return new Promise(r => setTimeout(r, ms));
+  }
+
+  // ========== 1. TERMINAL TYPEWRITER ENGINE ==========
   const terminalEl = document.getElementById('terminal-output');
 
   if (terminalEl) {
-    // Define the sequence of terminal commands and outputs
     const sequence = [
-      { type: 'prompt', text: '$ ' },
-      { type: 'cmd', text: 'whoami', speed: 80 },
-      { type: 'pause', ms: 300 },
-      { type: 'output', text: 'AI/ML Developer & Research Engineer', cls: 'terminal-string', speed: 25 },
-      { type: 'pause', ms: 500 },
-      { type: 'prompt', text: '$ ' },
-      { type: 'cmd', text: 'cat skills.txt', speed: 65 },
-      { type: 'pause', ms: 300 },
-      { type: 'output', text: 'LoRA/QLoRA Fine-Tuning, Agentic AI, Vision Transformers', cls: 'terminal-string', speed: 18 },
-      { type: 'pause', ms: 500 },
-      { type: 'prompt', text: '$ ' },
-      { type: 'cmd', text: 'echo $STATUS', speed: 70 },
-      { type: 'pause', ms: 300 },
-      { type: 'output', text: 'Building autonomous AI systems @ scale', cls: 'terminal-keyword', speed: 22 },
+      { type: 'prompt', text: '→ ~ ' },
+      { type: 'cmd', text: 'whoami', speed: 70 },
+      { type: 'newline' },
+      { type: 'output', text: '  AI/ML Developer @ Ankpal Technologies', cls: 'terminal-string', speed: 22 },
+      { type: 'newline' },
+      { type: 'output', text: '  Research: IIT Guwahati · Vision Transformers', cls: 'terminal-dim', speed: 18 },
+      { type: 'newline' },
+      { type: 'output', text: '  IIIT BBSR · LC Guardian 2145 · CF Specialist', cls: 'terminal-dim', speed: 18 },
       { type: 'pause', ms: 600 },
-      { type: 'prompt', text: '$ ' },
-      { type: 'cursor' },
+      { type: 'newline' },
+      { type: 'prompt', text: '→ ' },
+      { type: 'cmd', text: 'stack — ', speed: 60 },
+      { type: 'output', text: 'pytorch · fastapi · vllm · crewai · docker', cls: 'terminal-string', speed: 16 },
+      { type: 'output', text: ' _', cls: 'terminal-accent', speed: 0 },
     ];
 
     let currentLine = null;
-    let currentSpan = null;
 
     function createNewLine() {
       currentLine = document.createElement('div');
@@ -38,176 +40,401 @@ document.addEventListener('DOMContentLoaded', () => {
       return currentLine;
     }
 
-    async function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
     async function typeText(text, speed, className) {
       if (!currentLine) createNewLine();
-      currentSpan = document.createElement('span');
-      if (className) currentSpan.className = className;
-      currentLine.appendChild(currentSpan);
+      const span = document.createElement('span');
+      if (className) span.className = className;
+      currentLine.appendChild(span);
+
+      if (speed === 0) {
+        span.textContent = text;
+        return;
+      }
 
       for (let i = 0; i < text.length; i++) {
-        currentSpan.textContent += text[i];
-        // Add slight randomness to typing speed for realism
-        const jitter = speed + (Math.random() * speed * 0.6 - speed * 0.3);
-        await sleep(Math.max(10, jitter));
+        span.textContent += text[i];
+        const jitter = speed + (Math.random() * speed * 0.5 - speed * 0.25);
+        await sleep(Math.max(8, jitter));
       }
     }
 
-    async function runSequence() {
+    async function runTerminalSequence() {
       for (const step of sequence) {
         switch (step.type) {
           case 'prompt':
             createNewLine();
-            const promptSpan = document.createElement('span');
-            promptSpan.className = 'terminal-prompt';
-            promptSpan.textContent = step.text;
-            currentLine.appendChild(promptSpan);
+            await typeText(step.text, 0, 'terminal-prompt');
             break;
-
           case 'cmd':
             await typeText(step.text, step.speed || 70, 'terminal-cmd');
-            await sleep(150);
+            await sleep(100);
             break;
-
           case 'output':
-            createNewLine();
             await typeText(step.text, step.speed || 20, step.cls || 'terminal-string');
             break;
-
+          case 'newline':
+            createNewLine();
+            break;
           case 'pause':
             await sleep(step.ms || 300);
             break;
-
-          case 'cursor':
-            if (!currentLine) createNewLine();
-            const cursor = document.createElement('span');
-            cursor.className = 'terminal-cursor';
-            currentLine.appendChild(cursor);
-            break;
         }
       }
 
-      // After sequence finishes, wait then clear and loop
-      await sleep(3000);
+      // Add blinking cursor at the end
+      const cursor = document.createElement('span');
+      cursor.className = 'terminal-cursor';
+      if (currentLine) currentLine.appendChild(cursor);
+
+      // Loop after delay
+      await sleep(5000);
       terminalEl.innerHTML = '';
       currentLine = null;
-      currentSpan = null;
-      runSequence(); // restart
+      runTerminalSequence();
     }
 
-    // Start typing when the terminal card scrolls into view
+    // Start after a short delay
     const terminalCard = terminalEl.closest('.terminal-card');
-    const terminalObserver = new IntersectionObserver((entries) => {
+    const termObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          terminalObserver.disconnect();
-          setTimeout(() => runSequence(), 400);
+          termObserver.disconnect();
+          setTimeout(() => runTerminalSequence(), 500);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
 
-    terminalObserver.observe(terminalCard);
+    termObserver.observe(terminalCard);
   }
 
-  // ========== PROFILE BIO TYPEWRITER (Looping) ==========
-  const bioEl = document.getElementById('profile-bio-text');
-  if (bioEl) {
-    const bioText = 'Building Agentic AI systems, fine-tuned LLMs, and low-latency voice pipelines. Specializing in autonomous agents, LoRA/QLoRA, and Vision Transformers.';
+  // ========== 2. ORBITAL CANVAS ANIMATION ==========
+  const canvas = document.getElementById('orbital-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let animId;
 
-    const bioCursor = document.createElement('span');
-    bioCursor.className = 'terminal-cursor';
-    bioCursor.style.cssText = 'height:12px;width:6px;display:inline-block;vertical-align:baseline;';
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
 
-    async function bioLoop() {
-      while (true) {
-        // Clear previous text, keep cursor
-        bioEl.textContent = '';
-        bioCursor.style.display = 'inline-block';
-        bioEl.appendChild(bioCursor);
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-        // Type in
-        for (let i = 0; i < bioText.length; i++) {
-          bioCursor.before(bioText[i]);
-          await sleep(28 + (Math.random() * 18 - 9));
+    const orbits = [
+      { rx: 160, ry: 80, angle: 0, speed: 0.003, tilt: -0.3, color: 'rgba(212, 165, 116, 0.3)' },
+      { rx: 200, ry: 100, angle: 1.5, speed: 0.004, tilt: 0.2, color: 'rgba(212, 165, 116, 0.2)' },
+      { rx: 130, ry: 130, angle: 3, speed: 0.002, tilt: -0.5, color: 'rgba(96, 165, 250, 0.15)' },
+      { rx: 240, ry: 60, angle: 4.5, speed: 0.0025, tilt: 0.4, color: 'rgba(212, 165, 116, 0.15)' },
+    ];
+
+    const particles = [];
+    for (let i = 0; i < 30; i++) {
+      particles.push({
+        x: Math.random(),
+        y: Math.random(),
+        size: Math.random() * 2 + 0.5,
+        alpha: Math.random() * 0.3 + 0.1,
+        speed: Math.random() * 0.0003 + 0.0001,
+      });
+    }
+
+    // Floating math equations
+    const equations = [
+      'e^(iωt)=cos(ωt)+i·sin(ωt)',
+      'sin(x)=sin(nπ/n)',
+      'ℱ(f)(ξ)= ∫ f(t)e^(-2πi ξt)',
+      'Σ cₙ e^(2πint/T)',
+      'X₀= Σ xₙ e^(-2πink/N)',
+    ];
+
+    function drawOrbital(time) {
+      const w = canvas.width / window.devicePixelRatio;
+      const h = canvas.height / window.devicePixelRatio;
+      const cx = w / 2;
+      const cy = h / 2;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Draw floating particles
+      particles.forEach(p => {
+        p.y -= p.speed;
+        if (p.y < -0.05) p.y = 1.05;
+        ctx.beginPath();
+        ctx.arc(p.x * w, p.y * h, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(212, 165, 116, ${p.alpha})`;
+        ctx.fill();
+      });
+
+      // Draw equations
+      ctx.font = '10px "JetBrains Mono", monospace';
+      equations.forEach((eq, i) => {
+        const ex = (0.1 + i * 0.2) * w;
+        const ey = (0.15 + (i % 3) * 0.3) * h;
+        ctx.fillStyle = `rgba(212, 165, 116, ${0.08 + Math.sin(time * 0.001 + i) * 0.04})`;
+        ctx.fillText(eq, ex, ey);
+      });
+
+      // Draw central sphere
+      const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, 50);
+      gradient.addColorStop(0, 'rgba(212, 165, 116, 0.15)');
+      gradient.addColorStop(0.5, 'rgba(212, 165, 116, 0.05)');
+      gradient.addColorStop(1, 'rgba(212, 165, 116, 0)');
+      ctx.beginPath();
+      ctx.arc(cx, cy, 50, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+
+      // Inner sphere
+      ctx.beginPath();
+      ctx.arc(cx, cy, 25, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 165, 116, 0.08)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(212, 165, 116, 0.12)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Draw orbits
+      orbits.forEach(orbit => {
+        orbit.angle += orbit.speed;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(orbit.tilt);
+
+        // Draw orbit path
+        ctx.beginPath();
+        ctx.ellipse(0, 0, orbit.rx, orbit.ry, 0, 0, Math.PI * 2);
+        ctx.strokeStyle = orbit.color;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+
+        // Draw orbiting dot
+        const dotX = Math.cos(orbit.angle) * orbit.rx;
+        const dotY = Math.sin(orbit.angle) * orbit.ry;
+        ctx.beginPath();
+        ctx.arc(dotX, dotY, 4, 0, Math.PI * 2);
+        ctx.fillStyle = orbit.color.replace(/[\d.]+\)$/, '0.8)');
+        ctx.fill();
+
+        // Glow
+        const glow = ctx.createRadialGradient(dotX, dotY, 0, dotX, dotY, 12);
+        glow.addColorStop(0, orbit.color.replace(/[\d.]+\)$/, '0.3)'));
+        glow.addColorStop(1, 'transparent');
+        ctx.beginPath();
+        ctx.arc(dotX, dotY, 12, 0, Math.PI * 2);
+        ctx.fillStyle = glow;
+        ctx.fill();
+
+        ctx.restore();
+      });
+
+      animId = requestAnimationFrame(() => drawOrbital(performance.now()));
+    }
+
+    // Start when visible
+    const orbitalObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          drawOrbital(performance.now());
+          orbitalObserver.disconnect();
         }
+      });
+    }, { threshold: 0.1 });
 
-        // Hold the full text for 4 seconds
-        await sleep(4000);
+    orbitalObserver.observe(canvas.parentElement);
+  }
 
-        // Erase character by character (faster)
-        const textNodes = [];
-        bioEl.childNodes.forEach(n => { if (n.nodeType === 3) textNodes.push(n); });
-        let fullText = textNodes.map(n => n.textContent).join('');
-        // Replace all text nodes with one
-        textNodes.forEach(n => n.remove());
-        const singleNode = document.createTextNode(fullText);
-        bioEl.insertBefore(singleNode, bioCursor);
-
-        for (let i = fullText.length; i > 0; i--) {
-          singleNode.textContent = fullText.slice(0, i - 1);
-          await sleep(12);
-        }
-
-        // Brief pause before retyping
-        await sleep(800);
+  // ========== 3. SCROLL REVEAL ANIMATION ==========
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        // Stagger reveals within the same viewport
+        const delay = entry.target.dataset.revealDelay || 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay);
       }
-    }
-
-    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-    setTimeout(bioLoop, 800);
-  }
-
-  // ========== GitHub-style Contribution Graph ==========
-  const graphEl = document.getElementById('contrib-graph');
-  if (graphEl) {
-    const levels = ['', 'l1', 'l2', 'l3', 'l4'];
-    for (let i = 0; i < 140; i++) {
-      const cell = document.createElement('div');
-      cell.className = 'contrib-cell';
-      const rand = Math.random();
-      if (rand > 0.75) cell.classList.add(levels[1]);
-      if (rand > 0.85) cell.classList.add(levels[2]);
-      if (rand > 0.92) cell.classList.add(levels[3]);
-      if (rand > 0.97) cell.classList.add(levels[4]);
-      graphEl.appendChild(cell);
-    }
-  }
-
-  // ========== Contact Form Handler ==========
-  const form = document.getElementById('contact-form');
-  const resp = document.getElementById('form-response');
-  if (form && resp) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      resp.innerHTML = `
-        <div style="margin-top: 0.75rem; padding: 0.65rem 1rem; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); border-radius: 8px; color: #4ade80; font-size: 0.85rem; font-weight: 500;">
-          ✓ Thanks, ${name}! Message received.
-        </div>
-      `;
-      form.reset();
     });
-  }
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-  // ========== Scroll Reveal Animation ==========
-  const observer = new IntersectionObserver((entries) => {
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.dataset.revealDelay = (i % 6) * 80; // stagger within each set
+    revealObserver.observe(el);
+  });
+
+  // ========== 4. ACTIVE NAVIGATION TRACKING ==========
+  const sections = document.querySelectorAll('section[id], .contact-section[id]');
+  const navLinks = document.querySelectorAll('.nav-link[data-section]');
+  const sectionDots = document.querySelectorAll('.section-dot[data-target]');
+
+  const navObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+        const id = entry.target.id;
+
+        // Update nav links
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.dataset.section === id);
+        });
+
+        // Update sidebar dots
+        sectionDots.forEach(dot => {
+          dot.classList.toggle('active', dot.dataset.target === id);
+        });
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.2, rootMargin: '-80px 0px -40% 0px' });
 
-  document.querySelectorAll('.bento-card').forEach((card, i) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = `opacity 0.5s ease ${i * 0.05}s, transform 0.5s ease ${i * 0.05}s`;
-    observer.observe(card);
+  sections.forEach(section => navObserver.observe(section));
+
+  // ========== 5. SMOOTH SCROLL FOR NAV LINKS ==========
+  document.querySelectorAll('.nav-link[href^="#"], .section-dot[data-target]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = el.getAttribute('href')?.replace('#', '') || el.dataset.target;
+      const section = document.getElementById(target);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ========== 6. DECORATIVE BAR GRAPH ==========
+  const barGraph = document.getElementById('bar-graph');
+  if (barGraph) {
+    const barCount = 80;
+    for (let i = 0; i < barCount; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'bar';
+      const h = Math.random() * 35 + 5;
+      bar.style.height = h + 'px';
+      bar.style.opacity = 0.2 + Math.random() * 0.4;
+      barGraph.appendChild(bar);
+    }
+  }
+
+  // ========== 7. NAVBAR SCROLL EFFECT ==========
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 100) {
+      navbar.style.background = 'rgba(13, 15, 20, 0.95)';
+      navbar.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.3)';
+    } else {
+      navbar.style.background = 'rgba(13, 15, 20, 0.85)';
+      navbar.style.boxShadow = 'none';
+    }
+
+    lastScroll = currentScroll;
+  }, { passive: true });
+
+  // ========== 8. HERO BADGE COUNTER ANIMATION ==========
+  const badges = document.querySelectorAll('.hero-badge .badge-value');
+  const badgeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const finalText = el.textContent;
+
+        // Only animate numeric values
+        const numMatch = finalText.match(/^(\d+)/);
+        if (numMatch) {
+          const target = parseInt(numMatch[1]);
+          const suffix = finalText.replace(numMatch[1], '');
+          let current = 0;
+          const duration = 1500;
+          const startTime = performance.now();
+
+          function animate(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            current = Math.round(eased * target);
+            el.textContent = current + suffix;
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            }
+          }
+
+          requestAnimationFrame(animate);
+        }
+
+        badgeObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  badges.forEach(badge => badgeObserver.observe(badge));
+
+  // ========== 9. THEME SWITCHER ==========
+  const themeSwitcher = document.getElementById('theme-switcher');
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeLabel = document.getElementById('theme-current-label');
+  const themeOptions = document.querySelectorAll('.theme-option');
+
+  // Theme names for display
+  const themeNames = {
+    warm: 'Warm',
+    signal: 'Signal',
+    paper: 'Paper',
+    forest: 'Forest',
+    rose: 'Rose',
+    amber: 'Amber',
+    violet: 'Violet',
+  };
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'warm';
+  applyTheme(savedTheme);
+
+  function applyTheme(theme) {
+    if (theme === 'warm') {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+
+    // Update label
+    if (themeLabel) themeLabel.textContent = themeNames[theme] || theme;
+
+    // Update active state
+    themeOptions.forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.themeValue === theme);
+    });
+
+    // Save to localStorage
+    localStorage.setItem('portfolio-theme', theme);
+  }
+
+  // Toggle panel
+  if (themeToggle) {
+    themeToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      themeSwitcher.classList.toggle('open');
+    });
+  }
+
+  // Theme option click
+  themeOptions.forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const theme = opt.dataset.themeValue;
+      applyTheme(theme);
+    });
+  });
+
+  // Close panel when clicking outside
+  document.addEventListener('click', (e) => {
+    if (themeSwitcher && !themeSwitcher.contains(e.target)) {
+      themeSwitcher.classList.remove('open');
+    }
   });
 
 });
